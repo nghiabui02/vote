@@ -3,9 +3,11 @@ import '../page/vote/vote.css'
 import {Field, Form, Formik} from "formik";
 import supabase from "../supabase";
 import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 
 export default function AddAVG() {
+    const navigate = useNavigate()
     async function handleClick(values) {
         try {
             const {error} = await supabase
@@ -13,7 +15,7 @@ export default function AddAVG() {
                 .insert(values)
                 .single()
             toast.success('Add success')
-            window.location.reload();
+            navigate('')
             if (error) throw error;
 
         } catch (error) {

@@ -6,6 +6,7 @@ import {Box, Modal} from "@mui/material";
 import * as React from 'react';
 import AddAVG from "../../conponent/addAVG";
 import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 const style = {
     position: 'absolute',
@@ -25,6 +26,7 @@ export default function Admin() {
     const [presenter, setPresenter] = useState([]);
     const [avg, setAvg] = useState([]);
     const [open, setOpen] = React.useState(false);
+    const navigate = useNavigate()
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
@@ -78,7 +80,9 @@ export default function Admin() {
                 .from('point')
                 .delete()
                 .eq('id', id);
-            window.location.reload();
+            navigate('')
+            await getProducts()
+            toast.success('Delete success')
             if (error) throw error;
         } catch (error) {
             alert(error.message);
@@ -91,7 +95,7 @@ export default function Admin() {
                 .from('statistics')
                 .delete()
                 .eq('id', id);
-            window.location.reload();
+           await getAvg()
             if (error) throw error;
         } catch (error) {
             toast.error(error.message)
