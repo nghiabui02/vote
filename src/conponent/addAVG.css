@@ -1,0 +1,14 @@
+.addAVGContainer {
+    width: 100%;
+    height: auto;
+}
+
+.containerInputAvg {
+    width: 100%;
+    height: 50px;
+    padding-top: 20px;
+    position: relative;
+    font-size: 14px;
+    display: flex;
+    padding-left: 1%;
+}
