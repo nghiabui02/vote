@@ -34,7 +34,7 @@
     height: 12%;
     display: flex;
     padding-top: 5%;
-    gap: 10%;
+    gap: 5%;
 }
 
 .imageZone {
@@ -127,7 +127,6 @@ option {
 
 .question {
     width: 100%;
-    font-size: 65%;
     padding: 5px;
     overflow-x: auto;
 }
