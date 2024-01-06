@@ -143,7 +143,7 @@ export default function Vote() {
 
                         <div className='containerOption'>
                             <div className='question'>
-                                <Typography>Bạn thấy nội dung vừa rồi như thế nào ?</Typography>
+                                <Typography variant="body2" gutterBottom>Bạn thấy nội dung vừa rồi như thế nào ?</Typography>
                                 <Box
                                     sx={{
                                         width: 200,
@@ -178,7 +178,7 @@ export default function Vote() {
 
                         <div className='containerOption'>
                             <div className='question'>
-                                <Typography>Bạn thấy cách truyền đạt vừa rồi như thế nào ?</Typography>
+                                <Typography variant="body2" gutterBottom>Bạn thấy cách truyền đạt vừa rồi như thế nào ?</Typography>
                                 <Box
                                     sx={{
                                         width: 200,
@@ -213,7 +213,7 @@ export default function Vote() {
 
                         <div className='containerOption'>
                             <div className='question'>
-                                <Typography>Bạn thấy tính tương tác vừa rồi như thế nào ?</Typography>
+                                <Typography variant="body2" gutterBottom>Bạn thấy tính tương tác vừa rồi như thế nào ?</Typography>
                                 <Box
                                     sx={{
                                         width: 200,
