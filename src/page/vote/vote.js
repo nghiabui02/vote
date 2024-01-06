@@ -4,6 +4,8 @@ import supabase from '../../supabase';
 import "./vote.css"
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {Box, Rating, TextField, Typography} from "@mui/material";
+import StarIcon from '@mui/icons-material/Star';
 
 const voteValidate = Yup.object().shape({
     name: Yup.string()
@@ -17,15 +19,33 @@ const voteValidate = Yup.object().shape({
     score3: Yup.string()
         .required('Bạn chưa lựa chọn')
 });
+const labels = {
+    1: 'Tệ',
+    2: 'Không hay',
+    3: 'Bình Thường',
+    4: 'Hay',
+    5: 'Tuyệt vời',
+};
+
+function getLabelText(value) {
+    return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
+}
 
 export default function Vote() {
     const [presenter, setPresenter] = useState([]);
     const navigate = useNavigate();
+    const [value, setValue] = useState(null);
+    const [value2, setValue2] = useState(null);
+    const [value3, setValue3] = useState(null);
+    const [hover, setHover] = useState(-1);
+    const [hover2, setHover2] = useState(-1);
+    const [hover3, setHover3] = useState(-1);
+
     const formikPoint = useFormik({
         initialValues: {
-            score: '',
-            score2: '',
-            score3: '',
+            score: value,
+            score2: value2,
+            score3: value3,
             name: ''
         }, validationSchema: voteValidate,
         onSubmit: (values) => {
@@ -104,9 +124,17 @@ export default function Vote() {
                 }}>
                     <form onSubmit={formikPoint.handleSubmit} className='containerForm'>
                         <div className='containerInput'>
-                            <input value={formikPoint.values.name} name='name' onChange={formikPoint.handleChange}
-                                   placeholder='Vui lòng nhập tên'/>
-                            <label htmlFor="name">Nhập tên bạn tại đây</label>
+                            <div>
+                                <TextField
+                                    id="filled-textarea"
+                                    label="Vui lòng nhập tên"
+                                    placeholder="Tên bạn là"
+                                    multiline
+                                    value={formikPoint.values.name}
+                                    onChange={formikPoint.handleChange}
+                                    name='name'
+                                />
+                            </div>
                             {formikPoint.errors.name && formikPoint.touched.name ? (
                                 <div className='validateName'>{formikPoint.errors.name}</div>
                             ) : null}
@@ -115,19 +143,32 @@ export default function Vote() {
 
                         <div className='containerOption'>
                             <div className='question'>
-                                <label>Bạn thấy nội dung vừa rồi như thế nào ?</label>
-                            </div>
-
-                            <div className='containerSelect'>
-                                <select value={formikPoint.values.score} onChange={formikPoint.handleChange}
-                                        name="score">
-                                    <option value={null}>Chọn</option>
-                                    <option value="1">Tệ</option>
-                                    <option value="2">Không hay</option>
-                                    <option value="3">Bình thường</option>
-                                    <option value="4">Hay</option>
-                                    <option value="5">Tuyệt vời</option>
-                                </select>
+                                <Typography>Bạn thấy nội dung vừa rồi như thế nào ?</Typography>
+                                <Box
+                                    sx={{
+                                        width: 200,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        margin: '0 auto'
+                                    }}
+                                >
+                                    <Rating
+                                        name="score"
+                                        value={formikPoint.values.score}
+                                        getLabelText={getLabelText}
+                                        onChange={(event, newValue) => {
+                                            setValue(newValue);
+                                            formikPoint.handleChange(event)
+                                        }}
+                                        onChangeActive={(event, newHover) => {
+                                            setHover(newHover);
+                                        }}
+                                        emptyIcon={<StarIcon style={{opacity: 0.55}} fontSize='medium'/>}
+                                    />
+                                    {value !== null && (
+                                        <Box sx={{ml: 2}}>{labels[hover !== -1 ? hover : value]}</Box>
+                                    )}
+                                </Box>
                                 {formikPoint.errors.score && formikPoint.touched.score ? (
                                     <div className='validate'>{formikPoint.errors.score}</div>
                                 ) : null}
@@ -137,18 +178,32 @@ export default function Vote() {
 
                         <div className='containerOption'>
                             <div className='question'>
-                                <label>Bạn thấy cách truyền đạt vừa rồi như thế nào ?</label>
-                            </div>
-                            <div className='containerSelect'>
-                                <select value={formikPoint.values.score2} onChange={formikPoint.handleChange}
-                                        name="score2">
-                                    <option value={null}>Chọn</option>
-                                    <option value="1">Tệ</option>
-                                    <option value="2">Không hay</option>
-                                    <option value="3">Bình thường</option>
-                                    <option value="4">Hay</option>
-                                    <option value="5">Tuyệt vời</option>
-                                </select>
+                                <Typography>Bạn thấy cách truyền đạt vừa rồi như thế nào ?</Typography>
+                                <Box
+                                    sx={{
+                                        width: 200,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        margin: '0 auto'
+                                    }}
+                                >
+                                    <Rating
+                                        name="score2"
+                                        value={formikPoint.values.score2}
+                                        getLabelText={getLabelText}
+                                        onChange={(event, newValue) => {
+                                            setValue2(newValue);
+                                            formikPoint.handleChange(event)
+                                        }}
+                                        onChangeActive={(event, newHover) => {
+                                            setHover2(newHover);
+                                        }}
+                                        emptyIcon={<StarIcon style={{opacity: 0.55}} fontSize='medium'/>}
+                                    />
+                                    {value2 !== null && (
+                                        <Box sx={{ml: 2}}>{labels[hover2 !== -1 ? hover2 : value2]}</Box>
+                                    )}
+                                </Box>
                                 {formikPoint.errors.score2 && formikPoint.touched.score2 ? (
                                     <div className='validate'>{formikPoint.errors.score2}</div>
                                 ) : null}
@@ -158,24 +213,36 @@ export default function Vote() {
 
                         <div className='containerOption'>
                             <div className='question'>
-                                <label>Bạn thấy sự tương tác của người thuyết trình như thế nào ?</label>
-                            </div>
-
-                            <div className='containerSelect'>
-                                <select value={formikPoint.values.score3} onChange={formikPoint.handleChange}
-                                        name="score3">
-                                    <option value={null}>Chọn</option>
-                                    <option value="1">Tệ</option>
-                                    <option value="2">Không hay</option>
-                                    <option value="3">Bình thường</option>
-                                    <option value="4">Hay</option>
-                                    <option value="5">Tuyệt vời</option>
-                                </select>
+                                <Typography>Bạn thấy tính tương tác vừa rồi như thế nào ?</Typography>
+                                <Box
+                                    sx={{
+                                        width: 200,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        margin: '0 auto'
+                                    }}
+                                >
+                                    <Rating
+                                        name="score3"
+                                        value={formikPoint.values.score3}
+                                        getLabelText={getLabelText}
+                                        onChange={(event, newValue) => {
+                                            setValue3(newValue);
+                                            formikPoint.handleChange(event)
+                                        }}
+                                        onChangeActive={(event, newHover) => {
+                                            setHover3(newHover);
+                                        }}
+                                        emptyIcon={<StarIcon style={{opacity: 0.55}} fontSize='medium'/>}
+                                    />
+                                    {value3 !== null && (
+                                        <Box sx={{ml: 2}}>{labels[hover3 !== -1 ? hover3 : value3]}</Box>
+                                    )}
+                                </Box>
                                 {formikPoint.errors.score3 && formikPoint.touched.score3 ? (
                                     <div className='validate'>{formikPoint.errors.score3}</div>
                                 ) : null}
                             </div>
-
                         </div>
 
                         <div className='buttonAdd'>

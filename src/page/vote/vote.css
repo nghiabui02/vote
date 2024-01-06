@@ -116,72 +116,17 @@ option {
 }
 
 
-input {
-    padding: 9px 7px 9px;
-    font-size: 12px;
-    width: 10rem;
-    height: 1.2rem;
-    outline: none;
-    background: #fafafa;
-    border-radius: 8px;
-    border: 1px solid #efefef;
-    color: darkslateblue;
-}
-
-.containerInput label {
-    position: absolute;
-    pointer-events: none;
-    left: 10px;
-    padding-bottom: 15px;
-    transform: translateY(10px);
-    line-height: 6px;
-    transition: all ease-out 0.1s;
-    font-size: 75%;
-    color: brown;
-    padding-top: 6px;
-    margin: 0 auto;
-}
-
-input:not(:placeholder-shown) + label {
-    transform: translateY(0);
-    font-size: 11px;
-}
-
-input:not(:placeholder-shown) {
-    padding-top: 14px;
-    padding-bottom: 2px;
-}
-
-input::placeholder {
-    visibility: hidden;
-}
-
-.login-form ::-moz-placeholder {
-    color: transparent;
-}
-
-input:not(:placeholder-shown) + label {
-    transform: translateY(0);
-    font-size: 11px;
-}
-
-input:not(:placeholder-shown) {
-    padding-top: 14px;
-    padding-bottom: 2px;
-}
-
 .containerOption {
     width: 100%;
     height: 50%;
     margin: 0 auto;
-    display: flex;
     padding-top: 5px;
     gap: 25px;
-    text-align: left;
+    text-align: center;
 }
 
 .question {
-    width: 54%;
+    width: 100%;
     font-size: 65%;
     padding: 5px;
     overflow-x: auto;

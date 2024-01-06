@@ -13,19 +13,20 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 350,
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
     height: 'auto',
-    borderRadius: '5px'
+    borderRadius: '5px',
+    textAlign:'center',
 };
 
 export default function Admin() {
     const [point, setPoint] = useState([]);
     const [presenter, setPresenter] = useState([]);
     const [avg, setAvg] = useState([]);
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const navigate = useNavigate()
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -84,6 +85,20 @@ export default function Admin() {
             await getProducts()
             toast.success('Delete success')
             if (error) throw error;
+        } catch (error) {
+            alert(error.message);
+        }
+    }
+    async function handleClick(values) {
+        try {
+            const {error} = await supabase
+                .from("statistics")
+                .insert(values)
+                .single()
+            toast.success('Add success')
+            await getAvg()
+            if (error) throw error;
+
         } catch (error) {
             alert(error.message);
         }
@@ -190,21 +205,19 @@ export default function Admin() {
                                         <label>AVG score</label>
                                     </div>
                                     <div style={{width: '30%', textAlign: 'center'}}>
-                                        <button style={{width: '30%'}} onClick={handleOpen}>Add</button>
+                                        <button style={{width: '80%'}} onClick={handleOpen}>Add avg point</button>
                                     </div>
                                 </div>
 
-                                <div>
                                     <Modal
                                         open={open}
                                         onClose={handleClose}
                                         aria-labelledby="modal-modal-title"
                                         aria-describedby="modal-modal-description">
                                         <Box sx={style}>
-                                            <AddAVG/>
+                                            <AddAVG close={handleClose} addAvgPoint={handleClick} />
                                         </Box>
                                     </Modal>
-                                </div>
 
                                 <div className='leftData'>
                                     {avg.map((item) => (
