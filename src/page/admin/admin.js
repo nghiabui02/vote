@@ -6,7 +6,6 @@ import {Box, Modal} from "@mui/material";
 import * as React from 'react';
 import AddAVG from "../../conponent/addAVG";
 import {toast} from "react-toastify";
-import {useNavigate} from "react-router-dom";
 
 const style = {
     position: 'absolute',
@@ -27,7 +26,6 @@ export default function Admin() {
     const [presenter, setPresenter] = useState([]);
     const [avg, setAvg] = useState([]);
     const [open, setOpen] = useState(false);
-    const navigate = useNavigate()
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
