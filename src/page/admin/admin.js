@@ -81,7 +81,6 @@ export default function Admin() {
                 .from('point')
                 .delete()
                 .eq('id', id);
-            navigate('')
             await getProducts()
             toast.success('Delete success')
             if (error) throw error;

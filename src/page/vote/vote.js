@@ -22,7 +22,7 @@ const voteValidate = Yup.object().shape({
 const labels = {
     1: 'Tệ',
     2: 'Không hay',
-    3: 'Bình Thường',
+    3: 'Tạm ổn',
     4: 'Hay',
     5: 'Tuyệt vời',
 };
@@ -201,7 +201,7 @@ export default function Vote() {
                                         emptyIcon={<StarIcon style={{opacity: 0.55}} fontSize='medium'/>}
                                     />
                                     {value2 !== null && (
-                                        <Box sx={{ml: 2, fontSize:'small'}}>{labels[hover2 !== -1 ? hover2 : value2]}</Box>
+                                        <Box var sx={{ml: 2, fontSize:'small'}}>{labels[hover2 !== -1 ? hover2 : value2]}</Box>
                                     )}
                                 </Box>
                                 {formikPoint.errors.score2 && formikPoint.touched.score2 ? (
