@@ -28,7 +28,7 @@ const labels = {
 };
 
 function getLabelText(value) {
-    return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
+    return `${value} Star${value !== 1 ? 'm' : ''}, ${labels[value]}`;
 }
 
 export default function Vote() {
@@ -141,7 +141,7 @@ export default function Vote() {
                         </div>
 
 
-                        <div className='containerOption'>
+                        <div style={{marginTop:'5%'}} className='containerOption'>
                             <div className='question'>
                                 <Typography variant="body2" gutterBottom>Bạn thấy nội dung vừa rồi như thế nào ?</Typography>
                                 <Box
@@ -166,7 +166,7 @@ export default function Vote() {
                                         emptyIcon={<StarIcon style={{opacity: 0.55}} fontSize='medium'/>}
                                     />
                                     {value !== null && (
-                                        <Box sx={{ml: 2}}>{labels[hover !== -1 ? hover : value]}</Box>
+                                        <Box sx={{ml: 2, fontSize:'small'}}>{labels[hover !== -1 ? hover : value]}</Box>
                                     )}
                                 </Box>
                                 {formikPoint.errors.score && formikPoint.touched.score ? (
@@ -201,7 +201,7 @@ export default function Vote() {
                                         emptyIcon={<StarIcon style={{opacity: 0.55}} fontSize='medium'/>}
                                     />
                                     {value2 !== null && (
-                                        <Box sx={{ml: 2}}>{labels[hover2 !== -1 ? hover2 : value2]}</Box>
+                                        <Box sx={{ml: 2, fontSize:'small'}}>{labels[hover2 !== -1 ? hover2 : value2]}</Box>
                                     )}
                                 </Box>
                                 {formikPoint.errors.score2 && formikPoint.touched.score2 ? (
@@ -236,7 +236,7 @@ export default function Vote() {
                                         emptyIcon={<StarIcon style={{opacity: 0.55}} fontSize='medium'/>}
                                     />
                                     {value3 !== null && (
-                                        <Box sx={{ml: 2}}>{labels[hover3 !== -1 ? hover3 : value3]}</Box>
+                                        <Box sx={{ml: 2, fontSize:'small'}}>{labels[hover3 !== -1 ? hover3 : value3]}</Box>
                                     )}
                                 </Box>
                                 {formikPoint.errors.score3 && formikPoint.touched.score3 ? (
