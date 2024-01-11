@@ -179,7 +179,7 @@ export default function Vote() {
 
                         <div className='containerOption'>
                             <div className='question'>
-                                <Typography variant="body2" gutterBottom>Bạn thấy cách truyền đạt vừa rồi như thế nào ?</Typography>
+                                <Typography variant="body2" gutterBottom>Bạn thấy cách truyền đạt vừa rồi như thế nào?</Typography>
                                 <Box
                                     sx={{
                                         width: 200,
