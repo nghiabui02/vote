@@ -40,6 +40,7 @@ export default function Vote() {
     const [hover, setHover] = useState(-1);
     const [hover2, setHover2] = useState(-1);
     const [hover3, setHover3] = useState(-1);
+    console.log(hover,'hover')
 
     const formikPoint = useFormik({
         initialValues: {
@@ -99,13 +100,13 @@ export default function Vote() {
                             <img className='imagePerson' src={item.img} alt=':<'/>
                         </div>
 
-                        <div className='namePerson'>
+                        <div>
                             <div className='titleName'>
-                                <h2>Người trình bày</h2>
+                                <span className='text-name'>Người trình bày</span>
                             </div>
 
                             <div className='name'>
-                                <p className='person'>{item.name}</p>
+                                <span className='person'>{item.name}</span>
                             </div>
 
                         </div>
