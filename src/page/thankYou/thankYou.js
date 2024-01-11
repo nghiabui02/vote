@@ -43,7 +43,7 @@ export default function ThankYou() {
                                 <img style={{maxWidth: '100%', maxHeight: '100%'}} src={item.thankImage} alt=''/>
                             </div>
                             <div>
-                                <p>Cảm ơn mọi người đã gửi lời yêu thương tới cho bạn {item.name}</p>
+                                <span>Cảm ơn mọi người đã gửi lời yêu thương tới bạn {item.name}</span>
                                 <p style={{color: 'blueviolet'}}>Chúc mọi người cuối tuần vui vẻ!</p>
                             </div>
                         </div>

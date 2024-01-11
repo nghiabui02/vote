@@ -206,16 +206,6 @@ export default function Admin() {
                                     </div>
                                 </div>
 
-                                    <Modal
-                                        open={open}
-                                        onClose={handleClose}
-                                        aria-labelledby="modal-modal-title"
-                                        aria-describedby="modal-modal-description">
-                                        <Box sx={style}>
-                                            <AddAVG close={handleClose} addAvgPoint={handleClick} />
-                                        </Box>
-                                    </Modal>
-
                                 <div className='leftData'>
                                     {avg.map((item) => (
                                         <div style={{display: 'flex', paddingTop: '10px'}}>
@@ -307,6 +297,15 @@ export default function Admin() {
                         </div>
                     </div>
                 </div>
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description">
+                    <Box sx={style}>
+                        <AddAVG close={handleClose} addAvgPoint={handleClick} />
+                    </Box>
+                </Modal>
             </div>
         </>
     )
